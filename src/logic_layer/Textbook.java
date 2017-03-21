@@ -10,33 +10,29 @@ public class Textbook {
 	private String author = "";
 	private String price = "";
 	private String isbn = "";
+	
 	public Textbook getTextbook(String isbn) throws TextbookNotFoundException{
-		try{
-			this.isbn = isbn;
-			getTextbookfromData(this.isbn);
-		}catch(TextbookNotFoundException e){
-			throw new TextbookNotFoundException();
-		}
-		
+		this.isbn = isbn;
+		getTextbookfromData(this.isbn);
 		return this;
 	}
+	
 	private void getTextbookfromData(String isbn) throws TextbookNotFoundException{
 		ParameterBox dataPack = new DataModel().getTextbookbyISBN(isbn);
-		try{
-			unpackTextbookData(dataPack);
-		}catch(TextbookNotFoundException e){
-			throw new TextbookNotFoundException();
-		}
-		
+		unpackTextbookData(dataPack);
 	}
+	
 	private void unpackTextbookData(ParameterBox dataPack) throws TextbookNotFoundException{
-		this.title = dataPack.get("title");
-		this.author = dataPack.get("author");
-		this.price = dataPack.get("price");
-		
 		if(dataPack.isEmpty()){
 			throw new TextbookNotFoundException("ISBN: "+ this.isbn + " is not found");
+		}else{
+			this.title = dataPack.get("textbooktitle");
+			this.author = dataPack.get("textbookauthor");
+			this.price = dataPack.get("textbookprice");
 		}
+		
+		
+		
 	}
 
 }

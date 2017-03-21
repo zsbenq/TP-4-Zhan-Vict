@@ -10,4 +10,6 @@ public interface UIServiceProvideInterface {
 	public void displayReceipt(ParameterBox param);
 	public void displayPatronIdError();
 	public void displayCopyIdError();
+	public void displayPaymentMethod();
+	public void displayPaymentFail();
 }

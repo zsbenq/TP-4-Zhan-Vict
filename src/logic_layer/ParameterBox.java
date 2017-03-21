@@ -1,20 +1,21 @@
 package logic_layer;
 
-public class ParameterBox {
+import java.util.HashMap;
+import java.util.Map;
 
-	public void add(String string, String patronId) {
-		// TODO Auto-generated method stub
-		
+public class ParameterBox {
+	private Map<String, String> map = new HashMap<String, String>();
+
+	public void add(String key, String value) {
+		map.put(key, value);
 	}
 
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return map.isEmpty();
 	}
 
-	public String get(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public String get(String key) {
+		return map.get(key);
 	}
 
 	

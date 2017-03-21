@@ -1,7 +1,5 @@
 package ui_layer;
 
-import java.util.Map;
-
 import logic_layer.ParameterBox;
 import logic_layer.UIServiceProvideInterface;
 
@@ -45,6 +43,18 @@ public class PageGenerator implements UIServiceProvideInterface {
 
 	@Override
 	public void displayCopyIdError() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayPaymentMethod() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayPaymentFail() {
 		// TODO Auto-generated method stub
 		
 	}

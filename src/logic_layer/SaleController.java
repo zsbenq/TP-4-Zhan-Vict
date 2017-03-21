@@ -48,11 +48,17 @@ public class SaleController {
 		try{
 			this.order.addItemtoOrder(copyId);
 			noticeUISaleCopyInfo();
+			noticeUIGetPaymentMethod();
 		}catch(Exception e){
 			noticeUICopyIdError();
 		}
 	}
 	
+	private void noticeUIGetPaymentMethod() {
+		uiService.displayPaymentMethod();
+		
+	}
+
 	private void noticeUISaleCopyInfo() {
 		ParameterBox param = new ParameterBox();
 		param.add("copytitle", this.order.getItemName());
@@ -66,7 +72,34 @@ public class SaleController {
 		
 	}
 
-	public void makePayment(){
+	public void makePayment(String paymentMethod){
+		try{
+			this.order.payOrder(paymentMethod);
+			noticeEvent();
+			noticeUIReceipt();
+		}catch(Exception e){
+			noticeUIPaymentFail();
+		}
 		
+	}
+
+	private void noticeUIPaymentFail() {
+		uiService.displayPaymentFail();
+	}
+
+	private void noticeEvent() {
+		Event event = new Event();
+		event.recordPaymentEvent(this.order);
+	}
+
+	private void noticeUIReceipt() {
+		Receipt receipt = this.order.getReceipt();
+		ParameterBox param = new ParameterBox();
+		param.add("receiptitemname", receipt.getItemName());
+		param.add("receiptitemprice", receipt.getItemPrice());
+		param.add("receiptordernumber", receipt.getOrderNumber());
+		param.add("receiptpaydate", receipt.getPayDate());
+		param.add("receiptpaymentmethod", receipt.getPaymentMethod());
+		uiService.displayReceipt(param);
 	}
 }
