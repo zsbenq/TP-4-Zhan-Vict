@@ -2,14 +2,16 @@ package data_layer;
 
 import java.util.Map;
 
+import logic_layer.ParameterBox;
+
 public class DataModel {
 
-	public Map<String, String> getCopybyId(String id) {
+	public ParameterBox getCopybyId(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Map<String, String> getTextbookbyISBN(String isbn) {
+	public ParameterBox getTextbookbyISBN(String isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}

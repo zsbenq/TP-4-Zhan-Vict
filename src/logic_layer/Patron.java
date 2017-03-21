@@ -4,6 +4,10 @@ public class Patron {
 	private String patronId = "";
 	private String patronName = "";
 	
+	public Patron getPatron(String id) {
+		return this;
+	}
+	
 	public String getPatronId() {
 		return patronId;
 	}
@@ -17,27 +21,11 @@ public class Patron {
 		this.patronName = patronName;
 	}
 	
-	public void preparetoBuy(){
-		
-	}
 	
-	public void buyCopy() {
-		
-	}
 	
-	public void makePayment() {
-		
-	}
 	
-	public void printReceipt() {
-		
-	}
+
 	
-	public void preparetoCheckOut() {
-		
-	}
-	
-	public void checkOutCopy() {
-		
-	}
+
+
 }

@@ -21,7 +21,7 @@ public class Textbook {
 		return this;
 	}
 	private void getTextbookfromData(String isbn) throws TextbookNotFoundException{
-		Map<String, String> dataPack = new DataModel().getTextbookbyISBN(isbn);
+		ParameterBox dataPack = new DataModel().getTextbookbyISBN(isbn);
 		try{
 			unpackTextbookData(dataPack);
 		}catch(TextbookNotFoundException e){
@@ -29,7 +29,7 @@ public class Textbook {
 		}
 		
 	}
-	private void unpackTextbookData(Map<String, String> dataPack) throws TextbookNotFoundException{
+	private void unpackTextbookData(ParameterBox dataPack) throws TextbookNotFoundException{
 		this.title = dataPack.get("title");
 		this.author = dataPack.get("author");
 		this.price = dataPack.get("price");

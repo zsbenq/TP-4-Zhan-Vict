@@ -1,7 +1,5 @@
 package logic_layer;
 
-import java.util.Map;
-
 import data_layer.DataModel;
 import exceptions.CopyNotFoundException;
 import exceptions.TextbookNotFoundException;
@@ -35,7 +33,7 @@ public class Copy {
 	}
 
 	private void getCopyfromData(String id) throws CopyNotFoundException{
-		Map<String, String> dataPack = new DataModel().getCopybyId(id);
+		ParameterBox dataPack = new DataModel().getCopybyId(id);
 		try{
 			unpackCopyData(dataPack);
 		}catch(CopyNotFoundException e){
@@ -44,7 +42,7 @@ public class Copy {
 		
 	}
 
-	private void unpackCopyData(Map<String, String> dataPack) throws CopyNotFoundException{
+	private void unpackCopyData(ParameterBox dataPack) throws CopyNotFoundException{
 		if(dataPack.isEmpty()){
 			throw new CopyNotFoundException("copyID: " + this.copyID + " is not found");
 		}

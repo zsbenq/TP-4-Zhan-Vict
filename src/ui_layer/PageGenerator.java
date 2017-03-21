@@ -2,18 +2,19 @@ package ui_layer;
 
 import java.util.Map;
 
+import logic_layer.ParameterBox;
 import logic_layer.UIServiceProvideInterface;
 
 public class PageGenerator implements UIServiceProvideInterface {
 
 	@Override
 	public void getPatronIDfromUserInput() {
-		System.out.println("");
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void displayPatronInfo(Map<String, String> parameterPackage) {
+	public void displayPatronInfo(ParameterBox param) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -25,15 +26,29 @@ public class PageGenerator implements UIServiceProvideInterface {
 	}
 
 	@Override
-	public void displaySaleItem(Map<String, String> parameterPackage) {
+	public void displaySaleCopy(ParameterBox param) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void displayReceipt(Map<String, String> parameterPackage) {
+	public void displayReceipt(ParameterBox param) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void displayPatronIdError() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayCopyIdError() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

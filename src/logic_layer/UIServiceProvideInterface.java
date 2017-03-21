@@ -4,8 +4,10 @@ import java.util.Map;
 
 public interface UIServiceProvideInterface {
 	public void getPatronIDfromUserInput();
-	public void displayPatronInfo(Map<String, String> parameterPackage);
+	public void displayPatronInfo(ParameterBox param);
 	public void getCopyIDfromUserInput();
-	public void displaySaleItem(Map<String, String> parameterPackage);
-	public void displayReceipt(Map<String, String> parameterPackage);
+	public void displaySaleCopy(ParameterBox param);
+	public void displayReceipt(ParameterBox param);
+	public void displayPatronIdError();
+	public void displayCopyIdError();
 }
