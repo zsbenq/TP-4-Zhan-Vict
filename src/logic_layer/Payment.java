@@ -1,5 +1,7 @@
 package logic_layer;
 
+import exceptions.PaymentFailException;
+
 public class Payment {
 	public void makePayment() throws PaymentFailException {
 		

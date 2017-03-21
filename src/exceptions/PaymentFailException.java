@@ -1,4 +1,4 @@
-package logic_layer;
+package exceptions;
 
 public class PaymentFailException extends Exception {
 

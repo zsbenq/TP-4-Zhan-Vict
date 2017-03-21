@@ -2,6 +2,7 @@ package logic_layer;
 
 import data_layer.DataModel;
 import exceptions.CopyNotFoundException;
+import exceptions.PaymentFailException;
 
 public class Order {
 	private SaleLineItem item = null;
