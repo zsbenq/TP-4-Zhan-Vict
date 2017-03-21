@@ -1,6 +1,7 @@
 package logic_layer;
 
 public class RentalController {
+
 	Patron currentPatron = new Patron();
 	UIServiceProvideInterface uiService = null;
 	
@@ -45,4 +46,5 @@ public class RentalController {
 		uiService.displayPatronIdError();
 		
 	}
+
 }

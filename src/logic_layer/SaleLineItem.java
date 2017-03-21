@@ -1,5 +1,6 @@
 package logic_layer;
 
+
 import exceptions.CopyNotFoundException;
 
 public class SaleLineItem {
@@ -17,6 +18,7 @@ public class SaleLineItem {
 	
 	public String getPrice(){
 		//make sure copy is not null
+
 		return null;
 		
 	}

@@ -1,5 +1,6 @@
 package logic_layer;
 
+
 public class SaleController {
 	Patron currentPatron = new Patron();
 	Order order = new Order();
@@ -101,5 +102,6 @@ public class SaleController {
 		param.add("receiptpaydate", receipt.getPayDate());
 		param.add("receiptpaymentmethod", receipt.getPaymentMethod());
 		uiService.displayReceipt(param);
+
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Map;
 
 public interface UIServiceProvideInterface {
 	public void getPatronIDfromUserInput();
+
 	public void displayPatronInfo(ParameterBox param);
 	public void getCopyIDfromUserInput();
 	public void displaySaleCopy(ParameterBox param);
@@ -12,4 +13,5 @@ public interface UIServiceProvideInterface {
 	public void displayCopyIdError();
 	public void displayPaymentMethod();
 	public void displayPaymentFail();
+
 }

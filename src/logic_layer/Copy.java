@@ -1,5 +1,6 @@
 package logic_layer;
 
+
 import data_layer.DataModel;
 import exceptions.CopyNotFoundException;
 import exceptions.TextbookNotFoundException;
@@ -47,6 +48,7 @@ public class Copy {
 	public String getCondition() {
 		return condition;
 	}
+
 
 
 	

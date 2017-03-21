@@ -1,5 +1,6 @@
 package logic_layer;
 
+
 import data_layer.DataModel;
 import exceptions.CopyNotFoundException;
 import exceptions.PatronNotFoundException;
@@ -38,11 +39,5 @@ public class Patron {
 	}
 	
 	
-	
-	
-	
-
-	
-
 
 }

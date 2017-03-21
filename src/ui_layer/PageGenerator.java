@@ -1,5 +1,6 @@
 package ui_layer;
 
+
 import logic_layer.ParameterBox;
 import logic_layer.UIServiceProvideInterface;
 
@@ -60,5 +61,6 @@ public class PageGenerator implements UIServiceProvideInterface {
 	}
 
 	
+
 
 }

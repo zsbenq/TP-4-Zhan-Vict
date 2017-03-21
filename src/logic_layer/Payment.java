@@ -1,5 +1,6 @@
 package logic_layer;
 
+
 import exceptions.PaymentFailException;
 
 public class Payment {
@@ -11,5 +12,6 @@ public class Payment {
 			throw new PaymentFailException();
 		}
 		
+
 	}
 }

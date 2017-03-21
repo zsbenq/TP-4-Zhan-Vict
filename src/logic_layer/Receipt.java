@@ -1,6 +1,7 @@
 package logic_layer;
 
 public class Receipt {
+
 	private String orderNumber = "";
 	private String itemName = "";
 	private String itemPrice = "";
@@ -53,4 +54,5 @@ public class Receipt {
 		this.paymentMethod = paymentMethod;
 	}
 	
+
 }
