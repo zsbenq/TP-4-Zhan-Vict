@@ -17,7 +17,7 @@ public class DataModel {
 		return null;
 	}
 
-	public void saveOrder(ParameterBox orderData) {
+	public void saveOrdertoDate(ParameterBox orderData) {
 		
 	}
 
@@ -29,5 +29,37 @@ public class DataModel {
 	public String getNewOrderNumber() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void saveRecordtoData(ParameterBox recordData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getNewRecordId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ParameterBox getAllRentalRecordsbyPatronId() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getUnreturnedRecordIdbyCopyId(String copyId) {
+		return copyId;
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateRecordIsReturnedValue(String recordId, boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateCopyInStock(String copyID, boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 }

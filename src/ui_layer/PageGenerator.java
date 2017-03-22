@@ -60,6 +60,24 @@ public class PageGenerator implements UIServiceProvideInterface {
 		
 	}
 
+	@Override
+	public void displayCheckOutInfo(ParameterBox param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayCheckOutComplete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayCheckInComplete() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 

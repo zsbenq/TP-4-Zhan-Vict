@@ -3,7 +3,6 @@ package logic_layer;
 public class Event {
 
 	public void recordPaymentEvent(Order order) {
-		order.getNewOrderNumber();
 		
 	}
 	
@@ -12,6 +11,11 @@ public class Event {
 	}
 	
 	public void recordCheckInEvent() {
+		
+	}
+
+	public void recordRentalEvent(RentalRecord record) {
+		// TODO Auto-generated method stub
 		
 	}
 }

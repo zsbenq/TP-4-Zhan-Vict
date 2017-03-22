@@ -15,12 +15,12 @@ public class Order {
 		getNewOrderNumber();
 	}
 	
-	void getNewOrderNumber() {
+	private void getNewOrderNumber() {
 		try{
 			String number = new DataModel().getNewOrderNumber();
-			this.orderNumber = number;
+			setOrderNumber(number);
 		}catch(Exception e){
-			this.orderNumber = "0";
+			setOrderNumber("0");
 		}
 		
 	}
@@ -32,23 +32,23 @@ public class Order {
 	}
 	
 	private void generateReceipt() {
-		getItemName();
-		getItemPrice();
+		// TODO Auto-generated method stub
+		// set all the attributes of receipt
 	}
 
 	private void saveOrdertoData() {
 		ParameterBox orderData = packOrderData();
-		new DataModel().saveOrder(orderData);
+		new DataModel().saveOrdertoDate(orderData);
 		
 	}
 
 	private ParameterBox packOrderData() {
 		ParameterBox dataPackage = new ParameterBox();
-		dataPackage.add("ordernumber", this.orderNumber);
-		dataPackage.add("orderitem", this.item.getTitle());
-		dataPackage.add("orderprice", this.item.getPrice());
-		dataPackage.add("orderpaydate", this.receipt.getPayDate());
-		dataPackage.add("orderpaymentmethod", this.receipt.getPaymentMethod());
+		dataPackage.add("ordernumber", this.getOrderNumber());
+		dataPackage.add("orderitem", this.getItem().getTitle());
+		dataPackage.add("orderprice", this.getItem().getPrice());
+		dataPackage.add("orderpaydate", this.getReceipt().getPayDate());
+		dataPackage.add("orderpaymentmethod", this.getReceipt().getPaymentMethod());
 		return dataPackage;
 	}
 
@@ -63,20 +63,62 @@ public class Order {
 	}
 
 	public String getItemName() {
+		if(this.item == null)
+		{
+			return "";
+		}
 		return this.item.getTitle();
 	}
 
 	public String getItemPrice() {
-		return this.item.getPrice();
+		if(this.item == null)
+		{
+			return "";
+		}
+		return null;
 	}
 
 
 	public Receipt getReceipt() {
-		saveOrdertoData();
-		generateReceipt();
-		return receipt;
+		if(this.receipt == null)
+		{
+			return new Receipt();
+		}
+		return null;
+	}
+
+	private SaleLineItem getItem() {
+		return item;
+	}
+
+	private void setItem(SaleLineItem item) {
+		this.item = item;
+	}
+
+	private static String getOrderNumber() {
+		return orderNumber;
+	}
+
+	private static void setOrderNumber(String orderNumber) {
+		Order.orderNumber = orderNumber;
+	}
+
+	private Patron getPatron() {
+		if(patron == null)
+		{
+			return new Patron();
+		}
+		return patron;
+	}
+
+	private void setPatron(Patron patron) {
+		this.patron = patron;
+	}
+
+	private void setReceipt(Receipt receipt) {
+		this.receipt = receipt;
 	}
 
 	
-
+	
 }

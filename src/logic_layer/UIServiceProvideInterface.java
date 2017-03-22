@@ -13,5 +13,10 @@ public interface UIServiceProvideInterface {
 	public void displayCopyIdError();
 	public void displayPaymentMethod();
 	public void displayPaymentFail();
+	public void displayCheckOutInfo(ParameterBox param);
+
+	public void displayCheckOutComplete();
+
+	public void displayCheckInComplete();
 
 }

@@ -2,8 +2,8 @@ package logic_layer;
 
 
 public class SaleController {
-	Patron currentPatron = new Patron();
-	Order order = new Order();
+	Patron currentPatron = null;
+	Order order = null;
 	UIServiceProvideInterface uiService = null;
 	
 	SaleController(UIServiceProvideInterface Spi){
@@ -11,14 +11,15 @@ public class SaleController {
 	}
 	
 	public void startSale(){
-		uiService.getPatronIDfromUserInput();
+		setOrder(new Order());
+		noticeUIGetPatronID();
 	}
 	
 	public void enterPartonId(String patronId){
 		try{
 			Patron patron = new Patron().getPatron(patronId);
 			this.currentPatron = patron;
-			this.order.addPatron(patron);
+			this.order.addPatron(this.currentPatron);
 			noticeUIPatronInfo();
 			noticeUIGetCopyID();
 		}catch(Exception e){
@@ -29,6 +30,11 @@ public class SaleController {
 	
 	private void noticeUIGetCopyID() {
 		uiService.getCopyIDfromUserInput();
+		
+	}
+	
+	private void noticeUIGetPatronID() {
+		uiService.getPatronIDfromUserInput();
 		
 	}
 
@@ -78,6 +84,7 @@ public class SaleController {
 			this.order.payOrder(paymentMethod);
 			noticeEvent();
 			noticeUIReceipt();
+			finishProcess();
 		}catch(Exception e){
 			noticeUIPaymentFail();
 		}
@@ -103,5 +110,26 @@ public class SaleController {
 		param.add("receiptpaymentmethod", receipt.getPaymentMethod());
 		uiService.displayReceipt(param);
 
+	}
+	
+	private void finishProcess() {
+		setCurrentPatron(null);
+		setOrder(null);
+	}
+
+	private Patron getCurrentPatron() {
+		return currentPatron;
+	}
+
+	private void setCurrentPatron(Patron currentPatron) {
+		this.currentPatron = currentPatron;
+	}
+
+	private Order getOrder() {
+		return order;
+	}
+
+	private void setOrder(Order order) {
+		this.order = order;
 	}
 }
