@@ -32,8 +32,7 @@ public class Order {
 	}
 	
 	private void generateReceipt() {
-		// TODO Auto-generated method stub
-		// set all the attributes of receipt
+		this.getReceipt();
 	}
 
 	private void saveOrdertoData() {
