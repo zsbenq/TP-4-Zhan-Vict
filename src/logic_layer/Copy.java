@@ -113,6 +113,11 @@ public class Copy {
 		
 	}
 
+	public String getISBN() {
+		
+		return getTextbook().getIsbn();
+	}
+
 	
 
 	

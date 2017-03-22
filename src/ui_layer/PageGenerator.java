@@ -8,7 +8,7 @@ public class PageGenerator implements UIServiceProvideInterface {
 
 	@Override
 	public void getPatronIDfromUserInput() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

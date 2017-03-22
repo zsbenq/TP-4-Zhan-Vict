@@ -1,6 +1,5 @@
 package logic_layer;
 
-import java.util.Map;
 
 public interface UIServiceProvideInterface {
 	public void getPatronIDfromUserInput();

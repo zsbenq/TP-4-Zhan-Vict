@@ -34,4 +34,14 @@ public class SaleLineItem {
 		this.copy = copy;
 	}
 
+	public String getISBN() {
+		
+		return getCopy().getISBN();
+	}
+
+	public String getCopyId() {
+		
+		return getCopy().getCopyID();
+	}
+
 }

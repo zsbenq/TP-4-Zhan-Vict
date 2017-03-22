@@ -45,7 +45,8 @@ public class Order {
 	private ParameterBox packOrderData() {
 		ParameterBox dataPackage = new ParameterBox();
 		dataPackage.add("ordernumber", this.getOrderNumber());
-		dataPackage.add("orderitem", this.getItem().getTitle());
+		dataPackage.add("orderisbn", this.getItem().getISBN());
+		dataPackage.add("ordercopyid", this.getItem().getCopyId());
 		dataPackage.add("orderprice", this.getItem().getPrice());
 		dataPackage.add("orderpaydate", this.getReceipt().getPayDate());
 		dataPackage.add("orderpaymentmethod", this.getReceipt().getPaymentMethod());

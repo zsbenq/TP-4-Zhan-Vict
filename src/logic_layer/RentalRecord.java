@@ -43,7 +43,7 @@ public class RentalRecord {
 	
 
 	public ArrayList<RentalRecord> getAllRentalRecords(String patronId) throws CopyNotFoundException {
-		ParameterBox dataPack = new DataModel().getAllRentalRecordsbyPatronId();
+		ParameterBox dataPack = new DataModel().getAllRentalRecordsbyPatronId(patronId);
 		ArrayList<RentalRecord> rentalRecords = unpackAllRentalRecords(dataPack);
 		return rentalRecords;
 	}
