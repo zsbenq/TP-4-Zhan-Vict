@@ -118,8 +118,18 @@ public class Copy {
 		return getTextbook().getIsbn();
 	}
 
-	
+	public String getPrice() {
+		return this.textbook.getPrice();
+	}
 
+	
+	public boolean isAvailable() {
+		if(getInStock() == true){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 }
 

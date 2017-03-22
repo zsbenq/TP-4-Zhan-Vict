@@ -11,13 +11,11 @@ public class RentalLineItem {
 	}
 
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.copy.getTitle();
 	}
 
 	public String getHoldDays() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.copy.getHoldDays();
 	}
 
 	private Copy getCopy() {
@@ -41,6 +39,10 @@ public class RentalLineItem {
 
 	public String getCopyId() {
 		return getCopy().getCopyID();
+	}
+
+	public boolean isCopyAvailable() {
+		return getCopy().isAvailable();
 	}
 
 

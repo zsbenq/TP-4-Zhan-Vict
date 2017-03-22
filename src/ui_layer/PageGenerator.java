@@ -1,6 +1,5 @@
 package ui_layer;
 
-
 import edu.princeton.cs.algs4.StdOut;
 import logic_layer.ParameterBox;
 
@@ -52,12 +51,11 @@ public class PageGenerator {
 		StdOut.println("1. Check In");
 		StdOut.println("2. Check Out");
 		StdOut.println("3. Sell Copy");
-		StdOut.println("4. Get Patron Record");
 		actionDispatcher.getUserSelection(ActionDispatcher.PAGE_MAINMENU, ActionDispatcher.OPTIONS_MAINMENU);
 	}
 
 	public void displayCopyIdError() {
-		StdOut.println("patron id is not found");
+		StdOut.println("copy id is not found");
 	
 		
 	}
@@ -75,7 +73,7 @@ public class PageGenerator {
 	}
 
 	public void displayCheckOutInfo(ParameterBox param) {
-		StdOut.println("Checking out: " + "<<" + param.get("copytitle") + ">>" + "    $" + param.get("copyduedate"));
+		StdOut.println("Checking out: " + "<<" + param.get("copytitle") + ">>" + "    Due by:" + param.get("copyduedate"));
 		StdOut.println("1. Comfirm");
 		actionDispatcher.getUserSelection(ActionDispatcher.PAGE_CONFIRM_CHECK_OUT, ActionDispatcher.OPTIONS_CONFIRM_CHECK_OUT);
 	}
@@ -86,11 +84,8 @@ public class PageGenerator {
 	}
 
 	public void displayCheckInComplete(ParameterBox param) {
-		StdOut.println("Check Out " + "<<" + param.get("copytitle") + ">>" + " Complete");
+		StdOut.println("Check in " + "<<" + param.get("copytitle") + ">>" + " Complete");
 
 	}
-
-	
-
 
 }

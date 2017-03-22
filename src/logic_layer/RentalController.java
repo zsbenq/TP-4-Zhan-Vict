@@ -1,5 +1,7 @@
 package logic_layer;
 
+import java.util.ArrayList;
+
 import exceptions.CopyNotFoundException;
 import exceptions.PatronNotFoundException;
 
@@ -70,6 +72,9 @@ public class RentalController {
 		return param;
 	}
 
+	public ParameterBox getPatronAllRentalRecords(String patronId) throws CopyNotFoundException {
+		return	getRecord().getAllRentalRecords(patronId);
+	}
 
 	public void completeCheckOut() throws CopyNotFoundException {
 		getRecord().completeCheckOut();

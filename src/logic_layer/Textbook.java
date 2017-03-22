@@ -36,8 +36,7 @@ public class Textbook {
 	}
 
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return title;
 	}
 
 	public String getAuthor() {

@@ -32,20 +32,31 @@ public class RentalRecord {
 	
 	public void addItemtoRecord(String copyId) throws CopyNotFoundException{
 		setItem(new RentalLineItem(copyId));
+		checkIfCopyAvailable();
 		setDueDate(calculateDueDate());
 	}
-
+	
+	private void checkIfCopyAvailable() throws CopyNotFoundException {
+		if(!getItem().isCopyAvailable()){
+			throw new CopyNotFoundException();
+		}
+	}
+	
 	public void returnCopy(String copyId) throws CopyNotFoundException {
+		setItem(new RentalLineItem(copyId));
 		DataModel model = new DataModel();
 		String recordId = model.getUnreturnedRecordIdbyCopyId(copyId);
 		model.updateRecordIsReturnedValue(recordId, true);
 	}
 	
 
-	public ArrayList<RentalRecord> getAllRentalRecords(String patronId) throws CopyNotFoundException {
-		ParameterBox dataPack = new DataModel().getAllRentalRecordsbyPatronId(patronId);
-		ArrayList<RentalRecord> rentalRecords = unpackAllRentalRecords(dataPack);
-		return rentalRecords;
+	public ParameterBox getAllRentalRecords(String patronId) throws CopyNotFoundException {
+		return new DataModel().getAllRentalRecordsbyPatronId(patronId);
+	}
+
+	public String getItemName() throws CopyNotFoundException {
+		
+		return getItem().getTitle();
 	}
 
 
@@ -62,17 +73,11 @@ public class RentalRecord {
 			}else if(dataPack.get("recordisreturned"+String.valueOf(i)).equals("false")){
 				recordfromData.setReturned(false);
 			}
-			
 			recordArr.add(recordfromData);
 		}
 		return recordArr;
 	}
-
-	public String getItemName() throws CopyNotFoundException {
-		
-		return getItem().getTitle();
-	}
-
+	
 	private String calculateDueDate() throws CopyNotFoundException {
 		String days = getItem().getHoldDays();
 		Date date = new Date();

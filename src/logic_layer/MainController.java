@@ -1,6 +1,7 @@
 package logic_layer;
 
 
+import data_layer.FakeDatabase;
 import exceptions.CopyNotFoundException;
 import exceptions.PatronNotFoundException;
 import exceptions.PaymentFailException;
@@ -31,6 +32,7 @@ public class MainController implements TRLInterface{
 		mainController.setPageGenerator(pageGenerator);
 		mainController.setRentalController(rentalController);
 		mainController.setSaleController(saleController);
+		new FakeDatabase();
 		return mainController;
 	}
 
@@ -58,9 +60,9 @@ public class MainController implements TRLInterface{
 
 	private ParameterBox sendPatronIdtoController(String inputPatronId) throws PatronNotFoundException {
 		ParameterBox pack = new ParameterBox();
-		if(currentProcess == RENTALPROCESS){
+		if(getCurrentProcess() == RENTALPROCESS){
 			pack = rentalController.enterPartonId(inputPatronId);
-		}else if(currentProcess == SALEPROCESS){
+		}else if(getCurrentProcess() == SALEPROCESS){
 			pack = saleController.enterPartonId(inputPatronId);
 		}
 		return pack;
@@ -76,9 +78,9 @@ public class MainController implements TRLInterface{
 	}
 
 	private void sendCopyIdtoController(String inputString) throws CopyNotFoundException {
-		if(currentProcess == RENTALPROCESS){
+		if(getCurrentProcess() == RENTALPROCESS){
 			sendCopyIdtoRentalController(inputString);
-		}else if(currentProcess == SALEPROCESS){
+		}else if(getCurrentProcess() == SALEPROCESS){
 			sendCopyIdtoSaleController(inputString);
 		}
 	}
@@ -110,13 +112,13 @@ public class MainController implements TRLInterface{
 	}
 	
 	private void finishProcess() {
-		currentProcess = 0;
+		setCurrentProcess(0);
 	}
 
 
 	@Override
 	public void startCheckIn() {
-		currentProcess = RENTALPROCESS;
+		setCurrentProcess(RENTALPROCESS);
 		rentalController.startCheckIn();
 		pageGenerator.getCopyIDfromUserInput();
 	}
@@ -125,7 +127,7 @@ public class MainController implements TRLInterface{
 
 	@Override
 	public void startCheckOut() {
-		currentProcess = RENTALPROCESS;
+		setCurrentProcess(RENTALPROCESS);
 		rentalController.startCheckOut();
 		pageGenerator.getPatronIDfromUserInput();
 	}
@@ -134,17 +136,9 @@ public class MainController implements TRLInterface{
 
 	@Override
 	public void startSale() {
-		currentProcess = SALEPROCESS;
+		setCurrentProcess(SALEPROCESS);
 		saleController.startSale();
 		pageGenerator.getPatronIDfromUserInput();
-	}
-
-	
-
-	@Override
-	public void CheckPatronRecord() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -170,5 +164,18 @@ public class MainController implements TRLInterface{
 	private void setRentalController(RentalController rentalController) {
 		this.rentalController = rentalController;
 	}
+	
+	private void setCurrentProcess(int process){
+		this.currentProcess = process;
+	}
+	
+	private int getCurrentProcess(){
+		return this.currentProcess;
+	}
 
+	@Override
+	public void CheckPatronRecord() {
+		// TODO Auto-generated method stub
+		
+	}
 }

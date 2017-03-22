@@ -45,7 +45,7 @@ public class FakeDatabase {
 	 */
 	public static ArrayList<Map<String, String>> EVENT = new ArrayList<Map<String, String>>();
 	
-	FakeDatabase() {
+	public FakeDatabase() {
 		initiateCopy();
 		initiateTextbook();
 		initiatePatron();

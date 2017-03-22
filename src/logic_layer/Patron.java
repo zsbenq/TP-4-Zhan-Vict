@@ -2,9 +2,7 @@ package logic_layer;
 
 
 import data_layer.DataModel;
-import exceptions.CopyNotFoundException;
 import exceptions.PatronNotFoundException;
-import exceptions.TextbookNotFoundException;
 
 public class Patron {
 	private String patronId = "";

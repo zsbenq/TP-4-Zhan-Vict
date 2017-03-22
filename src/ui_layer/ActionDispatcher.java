@@ -12,7 +12,7 @@ public class ActionDispatcher {
 	public static final int PAGE_MAINMENU = 1;
 	public static final int PAGE_PAYMENT = 2;
 	public static final int PAGE_CONFIRM_CHECK_OUT = 3;
-	public static final int OPTIONS_MAINMENU = 4;
+	public static final int OPTIONS_MAINMENU = 3;
 	public static final int OPTIONS_PAYMENT = 2;
 	public static final int OPTIONS_CONFIRM_CHECK_OUT = 1;
 	public static final int OPTION_MAINMENU_CHECK_IN = 1;
@@ -71,7 +71,6 @@ public class ActionDispatcher {
 			}
 			else{
 				StdOut.println("Input Error");
-				getUserInput(inputType);
 			}
 		}catch(Exception e){
 			System.err.println(e.getMessage());
