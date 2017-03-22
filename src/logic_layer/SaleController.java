@@ -1,98 +1,51 @@
 package logic_layer;
 
+import exceptions.CopyNotFoundException;
+import exceptions.PatronNotFoundException;
+import exceptions.PaymentFailException;
 
 public class SaleController {
 	Patron currentPatron = null;
 	Order order = null;
-	UIServiceProvideInterface uiService = null;
-	
-	SaleController(UIServiceProvideInterface Spi){
-		this.uiService = Spi;
-	}
 	
 	public void startSale(){
 		setOrder(new Order());
-		noticeUIGetPatronID();
 	}
 	
-	public void enterPartonId(String patronId){
-		try{
-			Patron patron = new Patron().getPatron(patronId);
-			this.currentPatron = patron;
-			this.order.addPatron(this.currentPatron);
-			noticeUIPatronInfo();
-			noticeUIGetCopyID();
-		}catch(Exception e){
-			noticeUIPatronIdError();
-		}
-		
+	public ParameterBox enterPartonId(String patronId) throws PatronNotFoundException{
+		Patron patron = new Patron().getPatron(patronId);
+		this.currentPatron = patron;
+		this.order.addPatron(this.currentPatron);
+		return packPatronInfo();
 	}
 	
-	private void noticeUIGetCopyID() {
-		uiService.getCopyIDfromUserInput();
-		
-	}
-	
-	private void noticeUIGetPatronID() {
-		uiService.getPatronIDfromUserInput();
-		
-	}
-
-	private void noticeUIPatronInfo() {
+	private ParameterBox packPatronInfo() {
 		ParameterBox param = new ParameterBox();
 		param.add("patronid", this.currentPatron.getPatronId());
 		param.add("patronname", this.currentPatron.getPatronName());
-		uiService.displayPatronInfo(param);
-		
+		return param;
 	}
 
-	private void noticeUIPatronIdError() {
-		uiService.displayPatronIdError();
-		
+
+	public ParameterBox enterCopyId(String copyId) throws CopyNotFoundException{
+		this.order.addItemtoOrder(copyId);
+		return packSaleCopyInfo();
 	}
 
-	public void enterCopyId(String copyId){
-		try{
-			this.order.addItemtoOrder(copyId);
-			noticeUISaleCopyInfo();
-			noticeUIGetPaymentMethod();
-		}catch(Exception e){
-			noticeUICopyIdError();
-		}
-	}
-	
-	private void noticeUIGetPaymentMethod() {
-		uiService.displayPaymentMethod();
-		
-	}
 
-	private void noticeUISaleCopyInfo() {
+	private ParameterBox packSaleCopyInfo() {
 		ParameterBox param = new ParameterBox();
 		param.add("copytitle", this.order.getItemName());
 		param.add("copyprice", this.order.getItemPrice());
-		uiService.displaySaleCopy(param);
-		
+		return param;
 	}
 
-	private void noticeUICopyIdError() {
-		uiService.displayCopyIdError();
-		
-	}
-
-	public void makePayment(String paymentMethod){
-		try{
-			this.order.payOrder(paymentMethod);
-			noticeEvent();
-			noticeUIReceipt();
-			finishProcess();
-		}catch(Exception e){
-			noticeUIPaymentFail();
-		}
-		
-	}
-
-	private void noticeUIPaymentFail() {
-		uiService.displayPaymentFail();
+	public ParameterBox makePayment(String paymentMethod) throws PaymentFailException{
+		this.order.payOrder(paymentMethod);
+		noticeEvent();
+		ParameterBox pack = packReceipt();
+		finishProcess();
+		return pack;
 	}
 
 	private void noticeEvent() {
@@ -100,7 +53,7 @@ public class SaleController {
 		event.recordPaymentEvent(this.order);
 	}
 
-	private void noticeUIReceipt() {
+	private ParameterBox packReceipt() {
 		Receipt receipt = this.order.getReceipt();
 		ParameterBox param = new ParameterBox();
 		param.add("receiptitemname", receipt.getItemName());
@@ -108,7 +61,7 @@ public class SaleController {
 		param.add("receiptordernumber", receipt.getOrderNumber());
 		param.add("receiptpaydate", receipt.getPayDate());
 		param.add("receiptpaymentmethod", receipt.getPaymentMethod());
-		uiService.displayReceipt(param);
+		return param;
 
 	}
 	
@@ -117,16 +70,8 @@ public class SaleController {
 		setOrder(null);
 	}
 
-	private Patron getCurrentPatron() {
-		return currentPatron;
-	}
-
 	private void setCurrentPatron(Patron currentPatron) {
 		this.currentPatron = currentPatron;
-	}
-
-	private Order getOrder() {
-		return order;
 	}
 
 	private void setOrder(Order order) {

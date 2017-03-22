@@ -1,81 +1,93 @@
 package ui_layer;
 
 
+import edu.princeton.cs.algs4.StdOut;
 import logic_layer.ParameterBox;
-import logic_layer.UIServiceProvideInterface;
 
-public class PageGenerator implements UIServiceProvideInterface {
-
-	@Override
+public class PageGenerator {
+	private ActionDispatcher actionDispatcher = null;
+	private static final String SPLITLINE = "************";
+	private static final String TABLEDASHLINE = "------------------------------";
+	
+	public PageGenerator(ActionDispatcher actionDispatcher){
+		this.actionDispatcher = actionDispatcher;
+	}
+	
 	public void getPatronIDfromUserInput() {
-		
-		
+		StdOut.println("Enter patron id: (ex: 001)");
+		actionDispatcher.getUserInput(ActionDispatcher.PATRONID);
 	}
 
-	@Override
 	public void displayPatronInfo(ParameterBox param) {
-		// TODO Auto-generated method stub
-		
+		StdOut.println("Welcome " + param.get("patronname"));
 	}
 
-	@Override
 	public void getCopyIDfromUserInput() {
-		// TODO Auto-generated method stub
-		
+		StdOut.println("Enter copy id: (ex: 01)");
+		actionDispatcher.getUserInput(ActionDispatcher.COPYID);
 	}
 
-	@Override
 	public void displaySaleCopy(ParameterBox param) {
-		// TODO Auto-generated method stub
-		
-	}
+		StdOut.println("Selling: " + "<<" + param.get("copytitle") + ">>" + "    $" + param.get("copyprice"));
+	} 
 
-	@Override
 	public void displayReceipt(ParameterBox param) {
-		// TODO Auto-generated method stub
+		StdOut.println(TABLEDASHLINE);
+		StdOut.println("Receipt");
+		StdOut.println("OrderNumber: " + param.get("receiptordernumber"));
+		StdOut.println("<<" + param.get("receiptitemname") + ">>" + "    $" + param.get("receiptitemprice"));
+		StdOut.println("Date: " + param.get("receiptpaydate"));
+		StdOut.println("Payment Method: " + param.get("receiptpaymentmethod"));
 		
+
 	}
 
-	@Override
 	public void displayPatronIdError() {
-		// TODO Auto-generated method stub
-		
+		StdOut.println("patron id is not found");
+
 	}
 
-	@Override
+	public void displayMainMenu() {
+		StdOut.println(SPLITLINE+"Main Menu"+SPLITLINE);
+		StdOut.println("1. Check In");
+		StdOut.println("2. Check Out");
+		StdOut.println("3. Sell Copy");
+		StdOut.println("4. Get Patron Record");
+		actionDispatcher.getUserSelection(ActionDispatcher.PAGE_MAINMENU, ActionDispatcher.OPTIONS_MAINMENU);
+	}
+
 	public void displayCopyIdError() {
-		// TODO Auto-generated method stub
+		StdOut.println("patron id is not found");
+	
 		
 	}
 
-	@Override
 	public void displayPaymentMethod() {
-		// TODO Auto-generated method stub
-		
+		StdOut.println("Select a payment method");
+		StdOut.println("1. Cash");
+		StdOut.println("2. Credit Card");
+		actionDispatcher.getUserSelection(ActionDispatcher.PAGE_PAYMENT, ActionDispatcher.OPTIONS_PAYMENT);
 	}
 
-	@Override
 	public void displayPaymentFail() {
-		// TODO Auto-generated method stub
-		
+		StdOut.println("Payment Failed");
+	
 	}
 
-	@Override
 	public void displayCheckOutInfo(ParameterBox param) {
-		// TODO Auto-generated method stub
-		
+		StdOut.println("Checking out: " + "<<" + param.get("copytitle") + ">>" + "    $" + param.get("copyduedate"));
+		StdOut.println("1. Comfirm");
+		actionDispatcher.getUserSelection(ActionDispatcher.PAGE_CONFIRM_CHECK_OUT, ActionDispatcher.OPTIONS_CONFIRM_CHECK_OUT);
 	}
 
-	@Override
 	public void displayCheckOutComplete() {
-		// TODO Auto-generated method stub
+		StdOut.println("Check Out Complete");
 		
 	}
 
-	@Override
-	public void displayCheckInComplete() {
-		// TODO Auto-generated method stub
-		
+	public void displayCheckInComplete(ParameterBox param) {
+		StdOut.println("Check Out " + "<<" + param.get("copytitle") + ">>" + " Complete");
+
 	}
 
 	
