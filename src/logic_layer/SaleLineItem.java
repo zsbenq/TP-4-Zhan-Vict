@@ -5,22 +5,20 @@ import exceptions.CopyNotFoundException;
 
 public class SaleLineItem {
 	private Copy copy = null;
+	private Order order;
 	
 	SaleLineItem(String copyId) throws CopyNotFoundException{
 		copy = new Copy().getCopybyId(copyId);
 	}
 	
 	public String getTitle(){
-		//make sure copy is not null
+		//where are we implementing title? I have not seen it yet.
 		return null;
 		
 	}
 	
 	public String getPrice(){
-		//make sure copy is not null
-
-		return null;
-		
+		return this.order.getItemPrice();
 	}
 
 	private Copy getCopy() {
