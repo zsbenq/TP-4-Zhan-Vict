@@ -3,6 +3,7 @@ package logic_layer;
 public class Event {
 
 	public void recordPaymentEvent(Order order) {
+		order.getNewOrderNumber();
 		
 	}
 	

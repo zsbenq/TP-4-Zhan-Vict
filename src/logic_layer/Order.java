@@ -15,7 +15,7 @@ public class Order {
 		getNewOrderNumber();
 	}
 	
-	private void getNewOrderNumber() {
+	void getNewOrderNumber() {
 		try{
 			String number = new DataModel().getNewOrderNumber();
 			this.orderNumber = number;
@@ -32,8 +32,8 @@ public class Order {
 	}
 	
 	private void generateReceipt() {
-		// TODO Auto-generated method stub
-		// set all the attributes of receipt
+		getItemName();
+		getItemPrice();
 	}
 
 	private void saveOrdertoData() {
@@ -67,14 +67,14 @@ public class Order {
 	}
 
 	public String getItemPrice() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.item.getPrice();
 	}
 
 
 	public Receipt getReceipt() {
-		// TODO Auto-generated method stub
-		return null;
+		saveOrdertoData();
+		generateReceipt();
+		return receipt;
 	}
 
 	
