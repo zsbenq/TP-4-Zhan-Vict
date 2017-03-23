@@ -4,19 +4,22 @@ public class Event {
 
 
 	public void recordRentalEvent(RentalRecord record) {
-		// TODO Auto-generated method stub
+		String event = "Worker: " + new Worker().whoisWorking() + "\n";
+		event += "Event: Rental\n";
+		event += "RecordId: " + record.getRecordId() + "\n";
+		writeEventToFile(event);
 	}
 	
 	public void recordPaymentEvent(Order order) {
-		
+		String event = "Worker: " + new Worker().whoisWorking() + "\n";
+		event += "Event: Payment\n";
+		event += "OrderNumber: " + order.getOrderNumber() + "\n";
+		writeEventToFile(event);
 	}
-	
-	public void recordCheckOutEvent() {
-		
-	}
-	
-	public void recordCheckInEvent() {
-		
+
+	private void writeEventToFile(String event) {
+		//do not implement, out of scope
+		return ;
 	}
 
 	

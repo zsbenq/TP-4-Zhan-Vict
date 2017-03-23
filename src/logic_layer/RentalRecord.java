@@ -124,7 +124,7 @@ public class RentalRecord {
 	}
 	
 	
-	private String getRecordId() {
+	public String getRecordId() {
 		if(this.recordId == null)
 		{
 			return "";

@@ -32,6 +32,10 @@ public class MainController implements TRLInterface{
 		mainController.setPageGenerator(pageGenerator);
 		mainController.setRentalController(rentalController);
 		mainController.setSaleController(saleController);
+		Worker worker = new Worker();
+		worker.setName("Tom");
+		worker.setWorkID("000001");
+		worker.startWork();
 		new FakeDatabase();
 		return mainController;
 	}

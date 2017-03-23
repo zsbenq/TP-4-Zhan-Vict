@@ -43,7 +43,7 @@ public class FakeDatabase {
 	 * patronid
 	 * isreturned
 	 */
-	public static ArrayList<Map<String, String>> EVENT = new ArrayList<Map<String, String>>();
+	
 	
 	public FakeDatabase() {
 		initiateCopy();

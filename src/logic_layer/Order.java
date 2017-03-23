@@ -103,7 +103,7 @@ public class Order {
 		return item;
 	}
 
-	private String getOrderNumber() {
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
