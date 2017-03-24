@@ -30,11 +30,11 @@ public class JUnit_rentalline_test
 			return null;
 		}
 		@Test
-		 //returns an error because in the Copy class, all these are null.
+		 //successfully labels isCopyAvailable as false
+		//implemented test to see if null would be accepted
 		 public void testGetAllBooks() throws Exception {
 
 			    assertEquals(null, mockedRental.getTitle());
-//			    assertEquals(holddays, mockedRental.getHoldDays());
 			    assertEquals(false, mockedRental.isCopyAvailable() );
 	}
 	}
