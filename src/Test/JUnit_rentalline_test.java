@@ -20,7 +20,6 @@ public class JUnit_rentalline_test
 	    
 		public static void setUp(){
 			  
-			    
 			    when(mockedRental.getTitle()).thenReturn(title);
 				when(mockedRental.getHoldDays()).thenReturn(holddays);
 				when(mockedRental.isCopyAvailable()).thenReturn(getCopy().isAvailable());
@@ -32,7 +31,7 @@ public class JUnit_rentalline_test
 		@Test
 		 //successfully labels isCopyAvailable as false
 		//implemented test to see if null would be accepted
-		 public void testGetAllBooks() throws Exception {
+		 public void testGetRentals() throws Exception {
 
 			    assertEquals(null, mockedRental.getTitle());
 			    assertEquals(false, mockedRental.isCopyAvailable() );

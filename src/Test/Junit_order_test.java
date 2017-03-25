@@ -23,7 +23,6 @@ public class Junit_order_test
 		
 	}
 		 @Test
-		 //??
 		public void testIfNull(){
 			assertNull(mockItem);
 			}	
