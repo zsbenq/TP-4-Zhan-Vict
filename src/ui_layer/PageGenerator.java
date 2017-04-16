@@ -1,7 +1,11 @@
 package ui_layer;
 
+import java.util.ArrayList;
+
 import edu.princeton.cs.algs4.StdOut;
+import exceptions.CopyNotFoundException;
 import logic_layer.ParameterBox;
+import logic_layer.RentalRecord;
 
 public class PageGenerator {
 	private ActionDispatcher actionDispatcher = null;
@@ -86,6 +90,19 @@ public class PageGenerator {
 	public void displayCheckInComplete(ParameterBox param) {
 		StdOut.println("Check in " + "<<" + param.get("copytitle") + ">>" + " Complete");
 
+	}
+
+	public void displayPatronRecords(ParameterBox param) {
+		int packSize = Integer.parseInt(param.get("size"));
+		for(int i=0; i<packSize; i++){
+			StdOut.print("<<" + param.get("recorditemname"+String.valueOf(i)) + ">>");
+			StdOut.print("  Due: " + param.get("recorditemduedate"+String.valueOf(i)));
+			if(param.get("recordisreturned"+String.valueOf(i)).equals("true")) {
+				StdOut.println(" returned");
+			}else if(param.get("recordisreturned"+String.valueOf(i)).equals("false")){
+				StdOut.println(" unreturned");
+			}
+		}
 	}
 
 }

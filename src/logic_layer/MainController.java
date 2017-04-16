@@ -54,22 +54,33 @@ public class MainController implements TRLInterface{
 	@Override
 	public void EnterPatronId(String inputPatronId) {
 		try{
-			ParameterBox responsePack = sendPatronIdtoController(inputPatronId);
-			pageGenerator.displayPatronInfo(responsePack);
+			if(getCurrentProcess() == RENTALPROCESS){
+				beginRentalProcessWithPatronId(inputPatronId);
+				
+			}else if(getCurrentProcess() == SALEPROCESS){
+				beginSaleProcessWithPatronId(inputPatronId);
+			}
 			pageGenerator.getCopyIDfromUserInput();
 		}catch(PatronNotFoundException e){
 			pageGenerator.displayPatronIdError();
+		} catch (CopyNotFoundException e) {
+			
 		}
 	}
 
-	private ParameterBox sendPatronIdtoController(String inputPatronId) throws PatronNotFoundException {
+	public void beginRentalProcessWithPatronId(String inputPatronId) throws PatronNotFoundException, CopyNotFoundException
+	{
+		ParameterBox patronInfoPack = rentalController.enterPartonId(inputPatronId);
+		pageGenerator.displayPatronInfo(patronInfoPack);
+		ParameterBox patronRecordsPack = rentalController.getPatronAllRentalRecords(inputPatronId);
+		pageGenerator.displayPatronRecords(patronRecordsPack);
+	}
+	
+	public void beginSaleProcessWithPatronId(String inputPatronId) throws PatronNotFoundException
+	{
 		ParameterBox pack = new ParameterBox();
-		if(getCurrentProcess() == RENTALPROCESS){
-			pack = rentalController.enterPartonId(inputPatronId);
-		}else if(getCurrentProcess() == SALEPROCESS){
-			pack = saleController.enterPartonId(inputPatronId);
-		}
-		return pack;
+		pack = saleController.enterPartonId(inputPatronId);
+		pageGenerator.displayPatronInfo(pack);
 	}
 
 	@Override
