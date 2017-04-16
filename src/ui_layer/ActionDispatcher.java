@@ -22,10 +22,10 @@ public class ActionDispatcher {
 	public static final int OPTION_PAYMENT_CASH = 1;
 	public static final int OPTION_PAYMENT_CREDITCARD = 2;
 	public static final int OPTION_CONFIRM_CHECK_OUT = 1;
-	private TRLInterface systemInterface = null;
+	private TRLInterface mainControllerInterface = null;
 	
-	public void bindSystemInterface(TRLInterface iTRL) {
-		systemInterface = iTRL;
+	public void bindmainControllerInterface(TRLInterface iTRL) {
+		mainControllerInterface = iTRL;
 	}
 	
 	private String captureUserInput()
@@ -82,10 +82,10 @@ public class ActionDispatcher {
 	private void passInputtoController(int inputType, String id) {
 		switch(inputType){
 		case PATRONID:
-			systemInterface.EnterPatronId(id);
+			mainControllerInterface.EnterPatronId(id);
 			break;
 		case COPYID:
-			systemInterface.EnterCopyId(id);
+			mainControllerInterface.EnterCopyId(id);
 			break;
 		default:
 			break;
@@ -121,7 +121,7 @@ public class ActionDispatcher {
 	private void passComfirmCheckOutSelectiontoController(int userSelection) {
 		switch (userSelection){
 		case OPTION_CONFIRM_CHECK_OUT:
-			systemInterface.confirmCheckOut();
+			mainControllerInterface.confirmCheckOut();
 			break;
 		default: 
 			StdOut.println("Error occured");
@@ -134,10 +134,10 @@ public class ActionDispatcher {
 	private void passPaymentSelectiontoController(int userSelection) {
 		switch (userSelection){
 		case OPTION_PAYMENT_CASH:
-			systemInterface.paymentMethod("Cash");
+			mainControllerInterface.paymentMethod("Cash");
 			break;
 		case OPTION_PAYMENT_CREDITCARD:
-			systemInterface.paymentMethod("CreditCard");
+			mainControllerInterface.paymentMethod("CreditCard");
 			break;
 		default: 
 			StdOut.println("Error occured");
@@ -149,16 +149,16 @@ public class ActionDispatcher {
 	private void passMainMenuSelectiontoController(int userSelection) {
 		switch (userSelection){
 		case OPTION_MAINMENU_CHECK_IN:
-			systemInterface.startCheckIn();
+			mainControllerInterface.startCheckIn();
 			break;
 		case OPTION_MAINMENU_CHECK_OUT:
-			systemInterface.startCheckOut();
+			mainControllerInterface.startCheckOut();
 			break;
 		case OPTION_MAINMENU_SELL_COPY: 
-			systemInterface.startSale();
+			mainControllerInterface.startSale();
 			break;
 		case OPTION_MAINMENU_PATRON_RECORD:
-			systemInterface.CheckPatronRecord();
+			mainControllerInterface.CheckPatronRecord();
 			break;
 		default: 
 			StdOut.println("Error occured");

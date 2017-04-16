@@ -50,7 +50,7 @@ public class RentalRecord {
 	}
 	
 
-	public ParameterBox getAllRentalRecords(String patronId) throws CopyNotFoundException {
+	public ParameterBox getAllRentalRecordsOfPatron(String patronId) throws CopyNotFoundException {
 		return new DataModel().getAllRentalRecordsbyPatronId(patronId);
 	}
 

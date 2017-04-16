@@ -27,7 +27,7 @@ public class MainController implements TRLInterface{
 		SaleController saleController = new SaleController();
 		RentalController rentalController = new RentalController();
 		ActionDispatcher actionDispatcher = new ActionDispatcher();
-		actionDispatcher.bindSystemInterface(mainController);
+		actionDispatcher.bindmainControllerInterface(mainController);
 		PageGenerator pageGenerator = new PageGenerator(actionDispatcher);
 		mainController.setPageGenerator(pageGenerator);
 		mainController.setRentalController(rentalController);

@@ -73,7 +73,7 @@ public class RentalController {
 	}
 
 	public ParameterBox getPatronAllRentalRecords(String patronId) throws CopyNotFoundException {
-		return	getRecord().getAllRentalRecords(patronId);
+		return	getRecord().getAllRentalRecordsOfPatron(patronId);
 	}
 
 	public void completeCheckOut() throws CopyNotFoundException {
