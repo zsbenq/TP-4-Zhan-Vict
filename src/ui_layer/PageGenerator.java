@@ -94,6 +94,7 @@ public class PageGenerator {
 
 	public void displayPatronRecords(ParameterBox param) {
 		int packSize = Integer.parseInt(param.get("size"));
+		StdOut.println("History records:");
 		for(int i=0; i<packSize; i++){
 			StdOut.print("<<" + param.get("recorditemname"+String.valueOf(i)) + ">>");
 			StdOut.print("  Due: " + param.get("recorditemduedate"+String.valueOf(i)));
