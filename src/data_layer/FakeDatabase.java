@@ -52,22 +52,46 @@ public class FakeDatabase {
 	}
 	
 	private void initiateCopy() {
-		Map<String, String> copy = new HashMap<String, String>();
-		copy.put("copyid", "01");
-		copy.put("condition", "good");
-		copy.put("isbn", "1000");
-		copy.put("instock", "true");
-		COPY.add(copy);
+		Map<String, String> copy1 = new HashMap<String, String>();
+		copy1.put("copyid", "01");
+		copy1.put("condition", "good");
+		copy1.put("isbn", "1000");
+		copy1.put("instock", "true");
+		
+		Map<String, String> copy2 = new HashMap<String, String>();
+		copy2.put("copyid", "02");
+		copy2.put("condition", "good");
+		copy2.put("isbn", "1100");
+		copy2.put("instock", "true");
+		
+		Map<String, String> copy3 = new HashMap<String, String>();
+		copy3.put("copyid", "03");
+		copy3.put("condition", "good");
+		copy3.put("isbn", "1000");
+		copy3.put("instock", "true");
+		
+		COPY.add(copy1);
+		COPY.add(copy2);
+		COPY.add(copy3);
 	}
 	
 	private void initiateTextbook() {
-		Map<String, String> textbook = new HashMap<String, String>();
-		textbook.put("title", "Clean Code");
-		textbook.put("author", "Martin");
-		textbook.put("isbn", "1000");
-		textbook.put("price", "59");
-		textbook.put("holddays", "60");
-		TEXTBOOK.add(textbook);
+		Map<String, String> textbook1 = new HashMap<String, String>();
+		textbook1.put("title", "Clean Code");
+		textbook1.put("author", "Martin");
+		textbook1.put("isbn", "1000");
+		textbook1.put("price", "59");
+		textbook1.put("holddays", "60");
+		
+		Map<String, String> textbook2 = new HashMap<String, String>();
+		textbook2.put("title", "Applying UML");
+		textbook2.put("author", "Larman");
+		textbook2.put("isbn", "1100");
+		textbook2.put("price", "99");
+		textbook2.put("holddays", "900");
+		
+		TEXTBOOK.add(textbook1);
+		TEXTBOOK.add(textbook2);
 	}
 	
 	private void initiatePatron() {

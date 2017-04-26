@@ -26,7 +26,7 @@ public class PageGenerator {
 	}
 
 	public void getCopyIDfromUserInput() {
-		StdOut.println("Enter copy id: (ex: 01)");
+		StdOut.println("Enter copy id: (ex: 01, 02, 03)");
 		actionDispatcher.getUserInput(ActionDispatcher.COPYID);
 	}
 

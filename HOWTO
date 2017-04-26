@@ -1,0 +1,5 @@
+1. import project to eclipse
+2. open run configuration, set MainController as main class
+3. run the application
+4. follow the introduction shown on console to check out a book or sell a book
+5. checking out is usable only after check in the book
