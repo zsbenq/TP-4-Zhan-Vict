@@ -60,23 +60,6 @@ public class RentalRecord {
 	}
 
 
-	private ArrayList<RentalRecord> unpackAllRentalRecords(ParameterBox dataPack) throws CopyNotFoundException {
-		ArrayList<RentalRecord> recordArr = new ArrayList<RentalRecord>();
-		int packSize = Integer.parseInt(dataPack.get("size"));
-		for(int i=0; i<packSize; i++){
-			RentalRecord recordfromData = new RentalRecord();
-			recordfromData.setRecordId(dataPack.get("recordid"+String.valueOf(i)));
-			recordfromData.getItem().setItemName(dataPack.get("recorditemname"+String.valueOf(i)));
-			recordfromData.setDueDate(dataPack.get("recorditemduedate"+String.valueOf(i)));
-			if(dataPack.get("recordisreturned"+String.valueOf(i)).equals("true")) {
-				recordfromData.setReturned(true);
-			}else if(dataPack.get("recordisreturned"+String.valueOf(i)).equals("false")){
-				recordfromData.setReturned(false);
-			}
-			recordArr.add(recordfromData);
-		}
-		return recordArr;
-	}
 	
 	private String calculateDueDate() throws CopyNotFoundException {
 		String days = getItem().getHoldDays();
