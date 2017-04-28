@@ -23,7 +23,7 @@ public class DataModel {
 		return box;
 	}
 
-	public ParameterBox getTextbookbyISBN(String isbn) {
+	public static ParameterBox getTextbookbyISBN(String isbn) {
 		ParameterBox box = new ParameterBox();
 		for(int i=0; i<FakeDatabase.TEXTBOOK.size(); i++){
 			if(FakeDatabase.TEXTBOOK.get(i).get("isbn").equals(isbn)){

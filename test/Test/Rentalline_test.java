@@ -9,7 +9,7 @@ import org.junit.Test;
 import logic_layer.Copy;
 import logic_layer.RentalLineItem;
 
-public class JUnit_rentalline_test
+public class Rentalline_test
 	{
 		private static String isbn="555555";
 		private static String title="The adventures of Tom Saywer";

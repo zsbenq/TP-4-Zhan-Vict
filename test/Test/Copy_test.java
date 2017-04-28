@@ -2,6 +2,7 @@ package Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Captor;
@@ -11,15 +12,21 @@ import org.mockito.junit.MockitoRule;
 
 import data_layer.DataModel;
 import exceptions.CopyNotFoundException;
+import exceptions.TextbookNotFoundException;
 import logic_layer.Copy;
 import logic_layer.ParameterBox;
-public class JUnit_copy_test
+import logic_layer.Textbook;
+public class Copy_test
 	{
-		private static String isbn="555555";
-		private static String title="The adventures of Tom Saywer";
-		private static String copyId="455";
+		static String isbn="555555";
+		static String title="The adventures of Tom Saywer";
+		static String copyId="455";
+		private Textbook textbook = null;
 
 	    static Copy mockedCopy = mock(Copy.class);
+//	    //static TextbookNotFoundException mockedTBNotFound=mock(TextbookNotFoundException.class);
+	    static CopyNotFoundException mockedCNotFound=mock(CopyNotFoundException.class);
+	    static Textbook mockedTextbook=mock(Textbook.class);
 	    
 		 public static void setUp(){
 			  
@@ -27,6 +34,7 @@ public class JUnit_copy_test
 			    when(mockedCopy.getTitle()).thenReturn(title);
 				when(mockedCopy.getCopyID()).thenReturn(copyId);
 				when(mockedCopy.getISBN()).thenReturn(isbn);
+				
 	}
 		 @Test
 		 //returns an error because in the Copy class, all these are null.
@@ -38,4 +46,13 @@ public class JUnit_copy_test
 			    
 			  }
 		 
-	}
+		 
+		 @Test(expected = TextbookNotFoundException.class ) // will fail
+		    public void throwsDifferentExceptionThanExpected() throws TextbookNotFoundException {
+		        mockedCopy.getTextbookbyISBN(isbn);
+		    }
+				
+			
+		}
+		 
+
