@@ -45,7 +45,7 @@ public class Order_test
 		 
 		@Test
 		public void testVoid(){
-		mockedOrder.generateReceipt(); // tested with public visibility 
+		//mockedOrder.generateReceipt(); // tested with public visibility 
 		mockedOrder.addPatron(patron);
 		}
 		

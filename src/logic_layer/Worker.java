@@ -21,7 +21,7 @@ public class Worker {
 		currentWorker = this;
 	}
 	
-	Worker whoisWorking(){
+	public Worker whoisWorking(){
 		return currentWorker;
 	}
 }

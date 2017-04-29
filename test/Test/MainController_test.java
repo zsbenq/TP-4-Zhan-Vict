@@ -39,7 +39,7 @@ public class MainController_test{
 		 @Test(expected = CopyNotFoundException.class ) // testing which exception will be thrown
 		    public void throwsDifferentExceptionThanExpected() throws TextbookNotFoundException, CopyNotFoundException {
 				ParameterBox responsePack = mockedSaleController.enterCopyId(inputString);
-		    	mockedCopy.getTextbookbyISBN(isbn);
+		    	//mockedCopy.getTextbookbyISBN(isbn);
 	}
 		 @Test(expected = CopyNotFoundException.class )
 		 public void sendCopyIdtoRentalController() throws CopyNotFoundException {
