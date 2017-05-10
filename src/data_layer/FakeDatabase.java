@@ -1,8 +1,6 @@
 package data_layer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FakeDatabase {
 	public static ArrayList<Map<String, String>> COPY = new ArrayList<Map<String, String>>();
