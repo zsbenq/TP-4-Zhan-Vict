@@ -21,37 +21,30 @@ public class Patron_test
 		static ParameterBox mockedPB=mock(ParameterBox.class);
 		static String patronName="George";
 		
-		public void mockedPatronID(String patronID){
-			String id = null;
-			this.patronID = id;
-		}
-		
-		public void setUptoTest(){
-			
-		when(mockedPatron.getPatronId()).thenReturn(patronID);
-		
-		}
 		
 		@Test
-		public void testPatron() {
-			assertEquals(null, patronID);
-			assertEquals(patronID, id);
-			
+		public void thenReturnTest(){
+		when(mockedPatron.getPatronId()).thenReturn(null);
+		assertEquals(mockedPatron.getPatronName(), null);
+		assertEquals(null, mockedPB.get("patronId"));
 		}
+		
 		
 		@Test (expected=PatronNotFoundException.class)
 		public void testGetPatronFromData() throws PatronNotFoundException{
-			ParameterBox dataPack = new DataModel().getPatronbyId(id);
-			unpackPatronData(dataPack);
-		}
+			mockedPB = new DataModel().getPatronbyId(id);
+			unpackPatronData();
+			}
+
 
 		@Test (expected=PatronNotFoundException.class)
-		public void unpackPatronData(ParameterBox dataPack) throws PatronNotFoundException {
-			if(dataPack.isEmpty()){
+		public void unpackPatronData() throws PatronNotFoundException {
+			if(mockedPB.isEmpty()){
 				throw new PatronNotFoundException("patron id: " + this.id + " is not found");
 			}else{
-				this.id = dataPack.get("patronid");
-				Patron_test.patronName = dataPack.get("patronname");
-			}
+				this.id = mockedPB.get("patronid");
+				Patron_test.patronName = mockedPB.get("patronname");
+			
 	}
+		}
 	}

@@ -24,7 +24,7 @@ public class Copy {
 		return this;
 	}
 
-	private void getTextbookbyISBN(String isbn) throws TextbookNotFoundException  {
+	public void getTextbookbyISBN(String isbn) throws TextbookNotFoundException  {
 			Textbook textbook = new Textbook().getTextbookbyISBN(isbn);
 			setTextbook(textbook);
 	}
@@ -80,7 +80,7 @@ public class Copy {
 		this.isbn = isbn;
 	}
 
-	private Textbook getTextbook() {
+	public Textbook getTextbook() {
 		if(textbook == null)
 		{
 			return new Textbook();

@@ -45,15 +45,14 @@ public class Order_test
 		 
 		@Test
 		public void testVoid(){
-		//mockedOrder.generateReceipt(); // tested with public visibility 
 		mockedOrder.addPatron(patron);
 		}
 		
 		@Test
 		public void assertTest(){
-			assertEquals(orderNumber, mockedOrder.getOrderNumber());
-			assertEquals(item, mockedOrder.getItemPrice());
-			assertEquals(item, mockedOrder.getItemName());  // will return false because it is not null
+			assertEquals(null, mockedOrder.getOrderNumber());
+			assertEquals(null, mockedOrder.getItemPrice());
+			assertEquals(null, mockedOrder.getItemName());  
 		}
 		
 		
