@@ -50,4 +50,5 @@ public class MainController_test{
 					mockedPageGenerator.displayCheckInComplete(responsePack);
 				}
 			}
+		 
 }

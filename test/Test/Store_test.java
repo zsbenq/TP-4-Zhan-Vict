@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import data_layer.FakeDatabase;
 import exceptions.CopyNotFoundException;
 import logic_layer.Copy;
 import logic_layer.Patron;
@@ -27,4 +28,13 @@ public class Store_test
 			Copy returnedCopy = new Copy().getCopybyId(copyID);
 			returnedCopy.goInStock();
 	}
+		
+		@Test
+		public void test_Store() throws CopyNotFoundException
+		{
+			new FakeDatabase();
+			Store s = new Store();
+			s.removeCopy("001");
+			s.returnCopy("001");
+		}
 	}

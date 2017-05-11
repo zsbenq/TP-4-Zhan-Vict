@@ -30,4 +30,16 @@ public class Worker_test
 			// Testing different variables. Expect test to fail.
 			assertEquals(name, mockedWorker.getWorkID());
 		}
+		
+		@Test
+		public void test_Worker()
+		{
+			Worker w = new Worker();
+			w.setName("abc");
+			w.setWorkID("1");
+			assertEquals("abc", w.getName());
+			assertEquals("1", w.getWorkID());
+			w.startWork();
+			
+		}
 	}

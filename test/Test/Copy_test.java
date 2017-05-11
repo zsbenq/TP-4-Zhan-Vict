@@ -11,6 +11,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import data_layer.DataModel;
+import data_layer.FakeDatabase;
 import exceptions.CopyNotFoundException;
 import exceptions.TextbookNotFoundException;
 import logic_layer.Copy;
@@ -60,7 +61,24 @@ public class Copy_test
 					  
 				 }
 				 
-				
+				@Test
+				public void test_getCopy() throws CopyNotFoundException, TextbookNotFoundException
+				{
+					new FakeDatabase();
+					Copy c = new Copy();
+					c.getCopybyId("01");
+					assertEquals("1000", c.getISBN());
+					assertEquals("Clean Code", c.getTitle());
+					c.getInStock();
+					c.getHoldDays();
+					c.getTextbookbyISBN(isbn);
+					c.getCopyID();
+					c.getPrice();
+					c.getCondition();
+					c.getTextbook();
+					c.goInStock();
+					c.goOutStock();
+				}
 				
 	}
 		 

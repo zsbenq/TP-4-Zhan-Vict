@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import data_layer.DataModel;
+import data_layer.FakeDatabase;
 import exceptions.PatronNotFoundException;
 import logic_layer.ParameterBox;
 import logic_layer.Patron;
@@ -20,6 +21,7 @@ public class Patron_test
 		static String patronID="0123567";
 		static ParameterBox mockedPB=mock(ParameterBox.class);
 		static String patronName="George";
+		
 		
 		
 		@Test
@@ -46,5 +48,14 @@ public class Patron_test
 				Patron_test.patronName = mockedPB.get("patronname");
 			
 	}
+		}
+		
+		@Test
+		public void test_getPatron() throws PatronNotFoundException{
+			new FakeDatabase();
+			Patron p1 = new Patron().getPatron("001");
+			Patron p2 = new Patron().getPatron("021");
+			assertEquals("Mr. Software", p1.getPatronName());
+			assertEquals("Mr. Software", p2.getPatronName());
 		}
 	}

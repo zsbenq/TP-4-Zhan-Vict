@@ -35,5 +35,10 @@ public class SaleController_test
 			when(mockedSC.enterCopyId(copyId)).thenReturn(packSaleCopyInfo());
 		}
 
-
+		@Test
+		public void test_enterPartonId() throws PatronNotFoundException{
+			SaleController sc = new SaleController();
+			sc.startSale();
+			sc.enterPartonId("001");
+		}
 	}
