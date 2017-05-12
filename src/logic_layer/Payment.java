@@ -1,6 +1,7 @@
 package logic_layer;
 
 
+import java.text.DateFormat;
 import java.util.Date;
 
 import exceptions.PaymentFailException;
@@ -15,13 +16,23 @@ public class Payment {
 		this.method = paymentMethod;
 		Date date = new Date();
 		long today = date.getTime();
-		this.payDate = String.valueOf(today);
+		this.payDate = dateLongtoString(today);
 		if(!isPaySuccess){
 			throw new PaymentFailException();
 		}
 		
 
 	}
+	
+	private String dateLongtoString(long dueTime) {
+		Date dateTool = new Date();
+		dateTool.setTime(dueTime);
+		dateTool.getTime();
+		DateFormat a = DateFormat.getDateInstance(DateFormat.SHORT);
+		String dueString = a.format(dateTool);
+		return dueString;
+	}
+	
 	public String getMethod() {
 		return method;
 	}
