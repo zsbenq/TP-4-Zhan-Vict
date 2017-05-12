@@ -13,19 +13,15 @@ import logic_layer.Receipt;
 
 public class Receipt_test
 	{
-		static String itemName="Cheerios";
-		static Receipt mockedReceipt=mock(Receipt.class);
-		static String itemPrice="$2.95";
-		static String payDate="May 5th";
-		static String paymentMethod="Visa";
-		
-		
+
 		@Test
 		public void returnItems() {
-			when(mockedReceipt.getItemName()).thenReturn(itemName);
-			when(mockedReceipt.getItemPrice()).thenReturn(itemPrice);
-			when(mockedReceipt.getPayDate()).thenReturn(payDate);
-			when(mockedReceipt.getPaymentMethod()).thenReturn(paymentMethod);
+			Receipt mockedReceipt=new Receipt();
+			mockedReceipt.getItemName();
+			mockedReceipt.getItemPrice();
+			mockedReceipt.getPayDate();
+			mockedReceipt.getPaymentMethod();
+			mockedReceipt.getOrderNumber();
 		}
 
 

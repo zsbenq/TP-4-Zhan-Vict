@@ -12,6 +12,7 @@ import org.mockito.Mock;
 
 import exceptions.CopyNotFoundException;
 import logic_layer.Copy;
+import logic_layer.MainController;
 import logic_layer.ParameterBox;
 import logic_layer.Patron;
 import logic_layer.RentalController;
@@ -21,34 +22,75 @@ import ui_layer.PageGenerator;
 
 
 public class MainController_test{
-	static SaleController mockedSaleController=mock(SaleController.class);
-	static RentalController mockedRentalController=mock(RentalController.class);
+	static SaleController mockedSaleController;
+	static RentalController mockedRentalController;
+	static MainController mockedMC=new MainController();
 	String inputString="22222";
-	static Copy mockedCopy=mock(Copy.class);
+	static Copy mockedCopy;
 	static String isbn="10-3010221";
-	static PageGenerator mockedPageGenerator = mock(PageGenerator.class);
+	static PageGenerator mockedPageGenerator;
+	String inputPatronId;
 	
-
-		@Test(expected = CopyNotFoundException.class )
-		public void sendCopyIdtoSaleController() throws CopyNotFoundException {
-			ParameterBox responsePack = mockedSaleController.enterCopyId(inputString);
-			mockedPageGenerator.displaySaleCopy(responsePack);
-			mockedPageGenerator.displayPaymentMethod();
-		}
-		
-		 @Test(expected = CopyNotFoundException.class ) // testing which exception will be thrown
-		    public void throwsDifferentExceptionThanExpected() throws TextbookNotFoundException, CopyNotFoundException {
-				ParameterBox responsePack = mockedSaleController.enterCopyId(inputString);
-		    	//mockedCopy.getTextbookbyISBN(isbn);
+	@Test (expected=PatronNotFoundException.class)
+	public void getHoldID() throws PatronNotFoundException{ 
+		//enterPartonId(inputPatronId));
 	}
-		 @Test(expected = CopyNotFoundException.class )
-		 public void sendCopyIdtoRentalController() throws CopyNotFoundException {
-				ParameterBox responsePack = mockedRentalController.enterCopyId(inputString);
-				if(responsePack.get("complete") == null){
-					mockedPageGenerator.displayCheckOutInfo(responsePack);
-				}else{
-					mockedPageGenerator.displayCheckInComplete(responsePack);
-				}
-			}
-		 
+	
+	@Test
+	public void testEnterPatronIdinCheckIn()
+	{
+		MainController m = new MainController();
+		m.EnterPatronId(inputPatronId);
+	
+	}
+	
+	@Test
+	public void testEnterPatronIdinCheckOut()
+	{
+		mockedMC.startCheckOut();
+		mockedMC.EnterPatronId(inputPatronId);
+	}
+	
+	@Test
+	public void testEnterPatronIdinSale()
+	{
+		mockedMC.startSale();
+		mockedMC.EnterPatronId(inputPatronId);
+	}
+	
+	@Test
+	public void testEnterCopyId()
+	{
+		mockedMC.startCheckIn();
+		mockedMC.EnterCopyId(inputString);
+		mockedMC.startCheckOut();
+		mockedMC.EnterCopyId(inputString);
+		mockedMC.startSale();
+		mockedMC.EnterCopyId(inputString);
+	}
+	
+	@Test
+	public void testBeginRental()
+	{
+		try {
+			mockedMC.beginRentalProcessWithPatronId(inputPatronId);
+		} catch (PatronNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CopyNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testBeginSale()
+	{
+		try {
+			mockedMC.beginSaleProcessWithPatronId(inputString);
+		} catch (PatronNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

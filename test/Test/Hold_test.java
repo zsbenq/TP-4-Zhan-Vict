@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import data_layer.DataModel;
+import exceptions.CopyNotFoundException;
 import exceptions.PatronNotFoundException;
 import logic_layer.Copy;
 import logic_layer.Hold;
@@ -17,24 +18,40 @@ import logic_layer.RentalRecord;
 
 public class Hold_test
 	{
-		static Patron mockedPatron = mock(Patron.class);
-		static RentalRecord mockedRR=mock(RentalRecord.class);
-		static Hold mockedHold=mock(Hold.class);
+		static Patron mockedPatron=new Patron();
+		static RentalRecord mockedRR;
+		static Hold mockedHold;
 		static String patronID;
 		static String patronName="George";
 		static String holdID="0123456";
 		static String dueDate="May 5";
-		@Mock public RentalRecord newRecord;
-		static Copy holdingcopy=mock(Copy.class);
+		static String condition="average";
+		static String copyID="0091";
+		public RentalRecord newRecord;
+		static Copy holdingcopy;
+		String id="0908867";
+		Copy mockedCopy= new Copy();
+
 
 		
-		
-		@Test
-		public void testEquals() throws PatronNotFoundException{
-			assertEquals(false, mockedRR.isReturned());
-			assertEquals(patronID, mockedPatron.getPatron(holdID));
-			assertEquals(holdingcopy.getCondition(),mockedHold.getCondition());
-			when(mockedHold.isOverdue()).thenReturn(holdID);
+		@Test (expected=PatronNotFoundException.class)
+		public void getHoldID() throws PatronNotFoundException{
+			mockedPatron = new Patron().getPatron(holdID);	
 		}
+		
 
+		@Test (expected=CopyNotFoundException.class)
+		public void getCopyIdException() throws CopyNotFoundException{
+			mockedCopy.getCopybyId(id);
+		}
+		
+		@Test 
+		public void testGetterMethods(){
+			mockedCopy.getCondition();
+			mockedCopy.getHoldDays();
+			mockedCopy.getISBN();
+			mockedCopy.getTextbook();
+			
+		}
+		
 	}

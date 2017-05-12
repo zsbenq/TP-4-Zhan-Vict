@@ -22,7 +22,7 @@ public class MainController implements TRLInterface{
 		run(app);
 	}
 
-	private static MainController initialization() {
+	public static MainController initialization() {
 		MainController mainController = new MainController();
 		SaleController saleController = new SaleController();
 		RentalController rentalController = new RentalController();

@@ -20,21 +20,45 @@ import logic_layer.Store;
 
 public class Store_test
 	{
-		static Store mockedStore = mock(Store.class);
+		Store mockedStore;
 		String copyID="4560801";
 		
 		@Test (expected=CopyNotFoundException.class)
 		public void returnCopy() throws CopyNotFoundException {
 			Copy returnedCopy = new Copy().getCopybyId(copyID);
-			returnedCopy.goInStock();
-	}
+			mockedStore.removeCopy(copyID);
+		}
+		
+	
+		
+		@Test (expected=CopyNotFoundException.class)
+		public void remove_Copy() throws CopyNotFoundException
+		{
+			Copy removedCopy = new Copy().getCopybyId(copyID);
+			mockedStore.returnCopy("copyID");
+		}
 		
 		@Test
-		public void test_Store() throws CopyNotFoundException
+		public void testRemoveCopy()
 		{
-			new FakeDatabase();
 			Store s = new Store();
-			s.removeCopy("001");
-			s.returnCopy("001");
+			try {
+				s.removeCopy("01");
+			} catch (CopyNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		@Test
+		public void testReturnCopy()
+		{
+			Store s = new Store();
+			try {
+				s.returnCopy("001");
+			} catch (CopyNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}

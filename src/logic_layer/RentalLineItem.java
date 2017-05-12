@@ -6,9 +6,10 @@ public class RentalLineItem {
 	private Copy copy = null;
 	private String itemName = "";
 
-	RentalLineItem(String copyId) throws CopyNotFoundException {
+	public RentalLineItem(String copyId) throws CopyNotFoundException {
 		copy = new Copy().getCopybyId(copyId);
 	}
+
 
 	public String getTitle() {
 		return this.copy.getTitle();

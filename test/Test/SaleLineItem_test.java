@@ -12,6 +12,7 @@ import org.mockito.junit.MockitoRule;
 
 import data_layer.DataModel;
 import exceptions.CopyNotFoundException;
+import exceptions.PatronNotFoundException;
 import logic_layer.Copy;
 import logic_layer.Patron;
 import logic_layer.RentalLineItem;
@@ -21,29 +22,28 @@ public class SaleLineItem_test
 	{
 		String title="The Hunger Games";
 		String copyID="45078";
-		static Copy mockedCopy=mock(Copy.class);
+		Copy mockedCopy;
 		String copy=null;
-		static Patron mockedPatron=mock(Patron.class);
-		static SaleLineItem mockedSale=mock(SaleLineItem.class);
-		static Patron PatronID;
+		Patron mockedPatron;
+		SaleLineItem mockedSale;
+		Patron PatronID;
+
 		
-		@Rule public MockitoRule mockitoRule = MockitoJUnit.rule(); 
-		
-		@Test
-		public void getCopyId() {
-			when(mockedCopy.getCopyID()).thenReturn(copy);
-		}
+//		@Test
+//		public void getCopyId() {
+//			assertNull(copyID, mockedCopy.getCopyID());
+//		}
 		
 
 		@Test (expected=CopyNotFoundException.class)
 		public void getCopyID() throws CopyNotFoundException{
 			mockedCopy = new Copy().getCopybyId(copyID);	
 		}
+
 		
 		@Test
 		public void test() {
-			mockedPatron=(PatronID);
-			Mockito.doReturn(mockedCopy.getPrice()).when(mockedSale).getPrice();
+			assertEquals(mockedPatron,PatronID);
 			}
 		
 		}

@@ -15,19 +15,16 @@ import logic_layer.Payment;
 import logic_layer.RentalLineItem;
 public class Payment_test
 	{
-		static Payment mockedPayment=mock(Payment.class);
-		static String paymentMethod="cash";
-		static String payDate="April 25";
+		String paymentMethod="cash";
+		String payDate="April 25";
+		Payment mockedPayment=new Payment();
+		String newPayment;
 		
-		public interface TestClass{
-			boolean isPaySuccess(String paymentMethod);
-		}
-
-		
+			
 		@Test
 		public void returnTest() {
-			when(mockedPayment.getPayDate()).thenReturn(payDate);
-			when(mockedPayment.getMethod()).thenReturn(paymentMethod);	
+			mockedPayment.getPayDate();
+			mockedPayment.getMethod();
 	}
 	
 	

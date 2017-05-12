@@ -12,7 +12,7 @@ public class Order {
 	private Patron patron = null;
 	private Payment payment = null;
 	
-	Order(){
+	public Order(){
 		getNewOrderNumber();
 	}
 	

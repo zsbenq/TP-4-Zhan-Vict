@@ -16,7 +16,7 @@ public class RentalRecord {
 	private boolean isReturned = false;
 	
 
-	RentalRecord(){
+	public RentalRecord(){
 		obtainNewRecordId();
 	}
 	

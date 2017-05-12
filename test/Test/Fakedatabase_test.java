@@ -1,14 +1,12 @@
 package Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.stubbing.OngoingStubbing;
 
 import data_layer.DataModel;
 import data_layer.FakeDatabase;
@@ -22,9 +20,13 @@ import logic_layer.Textbook;
 
 public class Fakedatabase_test
 	{
-		FakeDatabase mockDatabase=mock(FakeDatabase.class);
-		Copy mockCopy=mock(Copy.class);
-		Textbook mockTextbook=mock(Textbook.class);
+		FakeDatabase mockDatabase;
+		Copy mockCopy;
+		Textbook mockTextbook;
+		String title="Life and Fate";
+		String price="15.99";
+		String author="Vasily Grossman";
+		String holdDays="15";
 		
 		public static ArrayList<Map<String, String>> COPY = new ArrayList<Map<String, String>>();
 		public static ArrayList<Map<String, String>> TEXTBOOK = new ArrayList<Map<String, String>>();
@@ -39,21 +41,21 @@ public class Fakedatabase_test
 			copy.put("instock", "true");
 			COPY.add(copy);
 		}
+		
 		@Test
 		public void initiateTextbook() {
 			Map<String, String> textbook1 = new HashMap<String, String>();
-			textbook1.put("title", "Clean Code");
-			textbook1.put("author", "Martin");
-			textbook1.put("isbn", "1000");
-			textbook1.put("price", "59");
-			textbook1.put("holddays", "60");
+			assertNull("Life and Fate", textbook1.get(title));
+			assertNull("15.99", textbook1.get(price));
+			assertNull("Vasily Grossman", textbook1.get(author));
+			assertNull("15", textbook1.get(holdDays));
 		}
 		
 		@Test
 		public void initiatePatron() {
 			Map<String, String> patron = new HashMap<String, String>();
-			Map mockedMapOptions=mock(Map.class);
-			when(mockedMapOptions.put("title", "The Hunger Games")).thenReturn(patron);
+			patron.put("patronid", "001");
+			patron.put("name", "Mr. Software");
 		}
 	
 		}

@@ -1,39 +1,38 @@
 package Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
+
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
+import exceptions.CopyNotFoundException;
 import logic_layer.Copy;
 import logic_layer.RentalLineItem;
 
 public class Rentalline_test
 	{
-		private static String isbn="555555";
-		private static String title="The adventures of Tom Saywer";
-		private static String copyId="455";
-		private static String holddays="10";
-
-	    static RentalLineItem mockedRental = mock(RentalLineItem.class);
+		static String isbn="555555";
+		static String title="The adventures of Tom Saywer";
+		static String holddays="10";
+		String copyId="12224";
+		static Copy mockedCopy=new Copy();
+//		RentalLineItem mockedRLI=new RentalLineItem(copyId); // cannot figure out how to get this to work
+		
 	    
-		public static void setUp(){
-			  
-			    when(mockedRental.getTitle()).thenReturn(title);
-				when(mockedRental.getHoldDays()).thenReturn(holddays);
-				when(mockedRental.isCopyAvailable()).thenReturn(getCopy().isAvailable());
-	}
-		 private static Copy getCopy() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		@Test
-		 //successfully labels isCopyAvailable as false
-		//implemented test to see if null would be accepted
-		 public void testGetRentals() throws Exception {
-
-			    assertEquals(null, mockedRental.getTitle());
-			    assertEquals(false, mockedRental.isCopyAvailable() );
-	}
+	    //this works
+	    @Test (expected=CopyNotFoundException.class)
+	    public void CopyNotFoundExceptionWithCopyID() throws CopyNotFoundException{
+	    	mockedCopy.getCopybyId(copyId);
+	    }
+	    
+	    @Test 
+	    public void testGetters(){
+//	    	mockedRLI.getHoldDays();
+//	    	mockedRLI.getTitle();
+//	    	mockedRLI.getCopyId();
+//	    	mockedRLI.getCopyId();
+//	    	mockedRLI.isCopyAvailable();
+	    }
 	}

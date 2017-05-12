@@ -14,32 +14,26 @@ import logic_layer.Worker;
 public class Worker_test
 	{
 		static Worker mockedWorker = mock(Worker.class);
-		static String name="Jorge";
 		String workID = "50505050";
 		static String currentWorker="Sheila";
 		
 		@Test
 		public void testEquals(){
 		// expect null
-		assertEquals(name, mockedWorker.getName());
-		assertEquals(currentWorker, mockedWorker.whoisWorking());
+		assertNull("Jorge", mockedWorker.getName());
+		assertNull("Sheila", mockedWorker.whoisWorking());
 		}
 		
-		@Test
-		public void assertFail(){
-			// Testing different variables. Expect test to fail.
-			assertEquals(name, mockedWorker.getWorkID());
-		}
 		
 		@Test
 		public void test_Worker()
 		{
 			Worker w = new Worker();
-			w.setName("abc");
-			w.setWorkID("1");
-			assertEquals("abc", w.getName());
-			assertEquals("1", w.getWorkID());
-			w.startWork();
+			mockedWorker.setName("abc");
+			mockedWorker.setWorkID("1");
+			assertEquals(null, mockedWorker.getName());
+			assertEquals(null, mockedWorker.getWorkID());
+			mockedWorker.startWork();
 			
 		}
 	}

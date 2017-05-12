@@ -8,7 +8,9 @@ import org.mockito.Mockito;
 import data_layer.DataModel;
 import data_layer.FakeDatabase;
 import exceptions.CopyNotFoundException;
+import exceptions.PatronNotFoundException;
 import exceptions.PaymentFailException;
+import logic_layer.Copy;
 import logic_layer.Order;
 import logic_layer.ParameterBox;
 import logic_layer.Patron;
@@ -18,25 +20,11 @@ import logic_layer.SaleLineItem;
 
 public class Order_test
 	{
-	    static Order mockedOrder = mock(Order.class);
-	    static Receipt mockReceipt=mock(Receipt.class);
+	    Order mockedOrder=new Order();
+	    Receipt mockReceipt;
 	    SaleLineItem mockItem = null;
-	    private static String copyId="0000";
-	    static Payment mockedPayment=mock(Payment.class);
-	    static ParameterBox mockedPB=mock(ParameterBox.class);
-	    static Payment payment1=null;
-	    static Patron patron;
-	    String orderNumber="12391823190";
-	    String item="Book";
+	    Receipt mockedReceipt=new Receipt();
 	    
-	    //set up methods
-		 public Payment getPayment(){
-					if(payment1 == null){
-						this.mockedPayment = new Payment();
-					}
-					return this.mockedPayment;
-					
-				}
 		
 		// actual implementation of tests
 		@Test
@@ -44,19 +32,58 @@ public class Order_test
 			assertNull(mockItem);}
 		 
 		@Test
-		public void testVoid(){
-		mockedOrder.addPatron(patron);
+		public void testGetters(){
+		mockedReceipt.getItemName();
+		mockedReceipt.getPayDate();
+		mockedReceipt.getPaymentMethod();
+		mockedReceipt.getItemPrice();
+		mockedOrder.getItemName();
+		mockedOrder.getItemPrice();
+		mockedOrder.getOrderNumber();
+		}
+		
+//		@Test
+//		public ParameterBox testPackOrderData() {
+//			ParameterBox dataPackage = new ParameterBox();
+//			dataPackage.add("ordernumber", mockedOrder.getOrderNumber());
+//			dataPackage.add("ordercopyid", mockedCopy.getCopyID());
+//			dataPackage.add("orderprice", mockedOrder.getItem().getPrice());
+//			dataPackage.add("orderpaymentmethod", mockedOrder.getReceipt().getPaymentMethod());
+//			return dataPackage;
+//		}
+		
+		@Test
+		public void testAddPatron()
+		{
+			Patron patron = new Patron();
+			Order order = new Order();
+			order.addPatron(patron);
+			order.getReceipt();
+		}
+		
+		@Test 
+		public void testPayOrder()
+		{
+			Order order = new Order();
+			try{
+			order.payOrder("cash");
+			}catch(Exception e){
+				
+			}
 		}
 		
 		@Test
-		public void assertTest(){
-			assertEquals(null, mockedOrder.getOrderNumber());
-			assertEquals(null, mockedOrder.getItemPrice());
-			assertEquals(null, mockedOrder.getItemName());  
-		}
-		
-		
+		public void testAddItemtoOrder()
+		{
+			Order order = new Order();
+			try {
+				order.addItemtoOrder("01");
+			} catch (CopyNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+		}
+}
 
 		
 
